@@ -34,7 +34,6 @@ module Yahoo
       end
 
       def merge_pro(opts={})
-        opts[:refresh_token] = @@options[:refresh_token]
         opts[:access_token] = @@options[:access_token]
         opts
       end
