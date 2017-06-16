@@ -6,6 +6,7 @@ require 'active_support/core_ext'
 require "yahoo/api/version"
 require "yahoo/api/response"
 require "yahoo/api/request"
+require "yahoo/api/product"
 require "yahoo/api/shopping"
 require "yahoo/api/auction"
 require "yahoo/api/news"
@@ -28,9 +29,13 @@ module Yahoo
       end
 
       def merge(opts={})
-        opts.merge!(@@options)
-        ids = opts[:appid].split(",")
-        opts[:appid] = ids[rand(ids.size)]
+        opts[:appid] = @@options[:appid]
+        opts
+      end
+
+      def merge_pro(opts={})
+        opts[:refresh_token] = @@options[:refresh_token]
+        opts[:access_token] = @@options[:access_token]
         opts
       end
 
