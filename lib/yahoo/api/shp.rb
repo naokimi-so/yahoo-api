@@ -5,7 +5,7 @@ module Yahoo
     class Shp
 
       GetShopCategory = "Yahoo::Api::Shp.get_shop_category"
-      GetShopCategoryList = "Yahoo::Api::Shp.get_shop_category"
+      GetShopCategoryList = "Yahoo::Api::Shp.get_shop_category_list"
       DownloadShopCategories = "Yahoo::Api::Shp.download_shop_categories"
       GetShopBrandList = "Yahoo::Api::Shp.get_shop_brand_list"
       DownloadShopBrands = "Yahoo::Api::Shp.download_shop_brands"
@@ -17,8 +17,8 @@ module Yahoo
           Yahoo::Request.get("https://circus.shopping.yahooapis.jp/ShoppingWebService/V1/getShopCategory", Yahoo::Api.merge_pro(opts), "xml")
         end
 
-        def get_shop_category(opts={})
-          Yahoo::Request.post("https://circus.shopping.yahooapis.jp/ShoppingWebService/V1/getShopCategoryList", Yahoo::Api.merge_pro(opts), "xml")
+        def get_shop_category_list(opts={})
+          Yahoo::Request.get("https://circus.shopping.yahooapis.jp/ShoppingWebService/V1/getShopCategoryList", Yahoo::Api.merge_pro(opts), "xml")
         end
 
         def download_shop_categories(opts={})
@@ -30,7 +30,7 @@ module Yahoo
         end
 
         def download_shop_brands(opts={})
-          Yahoo::Request.get("hhttps://circus.shopping.yahooapis.jp/ShoppingWebService/V1/downloadShopBrands", Yahoo::Api.merge_pro(opts), "xml")
+          Yahoo::Request.get("https://circus.shopping.yahooapis.jp/ShoppingWebService/V1/downloadShopBrands", Yahoo::Api.merge_pro(opts), "xml")
         end
       end
 
