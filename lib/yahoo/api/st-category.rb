@@ -4,8 +4,8 @@ module Yahoo
 
     class StCategory
 
-      GetStCategory = "Yahoo::Api::Shp.get_st_category"
-      StCategoryList = "Yahoo::Api::Shp.st_category_list"
+      GetStCategory = "Yahoo::Api::StCategory.get_st_category"
+      StCategoryList = "Yahoo::Api::StCategory.st_category_list"
 
       class << self
 
