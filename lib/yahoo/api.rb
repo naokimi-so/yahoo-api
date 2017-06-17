@@ -7,6 +7,7 @@ require "yahoo/api/version"
 require "yahoo/api/response"
 require "yahoo/api/request"
 require "yahoo/api/product"
+require "yahoo/api/shp"
 require "yahoo/api/shopping"
 require "yahoo/api/auction"
 require "yahoo/api/news"
@@ -34,7 +35,6 @@ module Yahoo
       end
 
       def merge_pro(opts={})
-        opts[:refresh_token] = @@options[:refresh_token]
         opts[:access_token] = @@options[:access_token]
         opts
       end
