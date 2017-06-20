@@ -1,5 +1,4 @@
 require 'faraday'
-require 'json'
 
 module Yahoo
 
@@ -14,10 +13,8 @@ module Yahoo
       conn = Faraday.new(:url => path) do |c|
         c.adapter Faraday.default_adapter
         c.headers['Authorization'] = "Bearer " + access_token
-        c.headers['Content-Type'] = "application/json"
-        c.body = opts.to_json
       end
-      Yahoo::Response.new(conn.body,format)
+      Yahoo::Response.new(conn.post {|req| req.body = opts.map {|k,v|"#{k}=#{CGI.escape(v)}"}.join('&'),format)
     end
 
   end
