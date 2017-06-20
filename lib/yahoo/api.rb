@@ -41,6 +41,10 @@ module Yahoo
         opts
       end
 
+      def access_token
+        @@options[:access_token]
+      end
+
       def get(method,opts={})
         eval "#{method}(#{opts})"
       end

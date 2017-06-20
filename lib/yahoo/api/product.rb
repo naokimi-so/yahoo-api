@@ -30,7 +30,7 @@ module Yahoo
         end
 
         def edit_item(opts={})
-          Yahoo::Request.post("https://circus.shopping.yahooapis.jp/ShoppingWebService/V1/editItem", Yahoo::Api.merge_pro(opts), "xml")
+          Yahoo::Request.post("https://circus.shopping.yahooapis.jp/ShoppingWebService/V1/editItem",Yahoo::Api.access_token ,opts,"xml")
         end
 
         def move_items(opts={})
