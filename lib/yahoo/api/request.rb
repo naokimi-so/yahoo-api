@@ -14,7 +14,7 @@ module Yahoo
         c.adapter Faraday.default_adapter
         c.headers['Authorization'] = "Bearer " + access_token
       end
-      Yahoo::Response.new(conn.post {|req| req.body = opts.map {|k,v|"#{k}=#{CGI.escape(v)}"}.join('&'),format)
+      Yahoo::Response.new(conn.post {|req| req.body = opts.map {|k,v|"#{k}=#{CGI.escape(v)}"}.join('&')},format)
     end
 
   end
