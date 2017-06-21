@@ -8,6 +8,8 @@ module Yahoo
       DataCheckHistoryDetail = "Yahoo::Api::StoreOpening.data_check_history_detail"
       PublishHistorySummary = "Yahoo::Api::StoreOpening.publish_history_summary"
       PublishHistoryDetail = "Yahoo::Api::StoreOpening.publish_history_detail"
+      ReservePublish = "Yahoo::Api::StoreOpening.reserve_publish"
+      DownloadRequest = "Yahoo::Api::StoreOpening.download_request"
       DownloadList = "Yahoo::Api::StoreOpening.download_list"
       DownloadSubmit = "Yahoo::Api::StoreOpening.download_submit"
 
@@ -31,6 +33,16 @@ module Yahoo
         # 反映履歴/未反映項目詳細API
         def publish_history_detail(opts={})
           Yahoo::Request.get("https://circus.shopping.yahooapis.jp/ShoppingWebService/V1/publishHistoryDetail", Yahoo::Api.merge_pro(opts), "xml")
+        end
+
+        # 全反映予約API
+        def reserve_publish(opts={})
+          Yahoo::Request.post("https://circus.shopping.yahooapis.jp/ShoppingWebService/V1/reservePublish", Yahoo::Api.access_token ,opts, "xml")
+        end
+
+        # ダウンロード要求API
+        def download_request(opts={})
+          Yahoo::Request.post("https://circus.shopping.yahooapis.jp/ShoppingWebService/V1/downloadRequest", Yahoo::Api.access_token ,opts, "xml")
         end
 
         # ダウンロード準備完了通知API

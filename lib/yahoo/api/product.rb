@@ -2,7 +2,7 @@ module Yahoo
 
   class Api
 
-    class Product < Helper
+    class Product
 
       MyItemList = "Yahoo::Api::Product.my_item_list"
       GetItem = "Yahoo::Api::Product.get_item"
@@ -18,15 +18,11 @@ module Yahoo
       class << self
 
         def my_item_list(opts={})
-          p "==========1============"
-          get("myItemList",opts,"xml")
-          p "==========2============"
-
-          # Yahoo::Request.get("https://circus.shopping.yahooapis.jp/ShoppingWebService/V1/myItemList", Yahoo::Api.merge_pro(opts), "xml")
+          Yahoo::Request.get("https://circus.shopping.yahooapis.jp/ShoppingWebService/V1/myItemList", Yahoo::Api.merge_pro(opts), "xml")
         end
 
         def submit_item(opts={})
-          Yahoo::Request.post("https://circus.shopping.yahooapis.jp/ShoppingWebService/V1/submitItem", Yahoo::Api.merge_pro(opts) ,opts, "xml")
+          Yahoo::Request.post("https://circus.shopping.yahooapis.jp/ShoppingWebService/V1/submitItem", Yahoo::Api.access_token ,opts, "xml")
         end
 
         def get_item(opts={})
