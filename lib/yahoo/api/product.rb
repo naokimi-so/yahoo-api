@@ -2,7 +2,7 @@ module Yahoo
 
   class Api
 
-    class Product
+    class Product < Helper
 
       MyItemList = "Yahoo::Api::Product.my_item_list"
       GetItem = "Yahoo::Api::Product.get_item"
@@ -18,11 +18,15 @@ module Yahoo
       class << self
 
         def my_item_list(opts={})
-          Yahoo::Request.get("https://circus.shopping.yahooapis.jp/ShoppingWebService/V1/myItemList", Yahoo::Api.merge_pro(opts), "xml")
+          p "==========1============"
+          get("myItemList",opts,"xml")
+          p "==========2============"
+
+          # Yahoo::Request.get("https://circus.shopping.yahooapis.jp/ShoppingWebService/V1/myItemList", Yahoo::Api.merge_pro(opts), "xml")
         end
 
         def submit_item(opts={})
-          Yahoo::Request.post("https://circus.shopping.yahooapis.jp/ShoppingWebService/V1/submitItem", Yahoo::Api.merge_pro(opts), "xml")
+          Yahoo::Request.post("https://circus.shopping.yahooapis.jp/ShoppingWebService/V1/submitItem", Yahoo::Api.merge_pro(opts) ,opts "xml")
         end
 
         def get_item(opts={})
@@ -34,23 +38,23 @@ module Yahoo
         end
 
         def move_items(opts={})
-          Yahoo::Request.post("https://circus.shopping.yahooapis.jp/ShoppingWebService/V1/moveItems", Yahoo::Api.merge_pro(opts), "xml")
+          Yahoo::Request.post("https://circus.shopping.yahooapis.jp/ShoppingWebService/V1/moveItems",Yahoo::Api.access_token ,opts, "xml")
         end
 
         def update_items(opts={})
-          Yahoo::Request.post("https://circus.shopping.yahooapis.jp/ShoppingWebService/V1/updateItems", Yahoo::Api.merge_pro(opts), "xml")
+          Yahoo::Request.post("https://circus.shopping.yahooapis.jp/ShoppingWebService/V1/updateItems",Yahoo::Api.access_token ,opts,"xml")
         end
 
         def set_item_display_priority(opts={})
-          Yahoo::Request.post("https://circus.shopping.yahooapis.jp/ShoppingWebService/V1/setItemDisplayPriority", Yahoo::Api.merge_pro(opts), "xml")
+          Yahoo::Request.post("https://circus.shopping.yahooapis.jp/ShoppingWebService/V1/setItemDisplayPriority", Yahoo::Api.access_token ,opts, "xml")
         end
 
         def delete_item(opts={})
-          Yahoo::Request.post("https://circus.shopping.yahooapis.jp/ShoppingWebService/V1/deleteItem", Yahoo::Api.merge_pro(opts), "xml")
+          Yahoo::Request.post("https://circus.shopping.yahooapis.jp/ShoppingWebService/V1/deleteItem", Yahoo::Api.access_token ,opts, "xml")
         end
 
         def upload_item_file(opts={})
-          Yahoo::Request.post("https://circus.shopping.yahooapis.jp/ShoppingWebService/V1/uploadItemFile", Yahoo::Api.merge_pro(opts), "xml")
+          Yahoo::Request.post("https://circus.shopping.yahooapis.jp/ShoppingWebService/V1/uploadItemFile", Yahoo::Api.access_token ,opts,"xml")
         end
       end
 
