@@ -26,7 +26,7 @@ module Yahoo
         end
 
         def submit_item(opts={})
-          Yahoo::Request.post("https://circus.shopping.yahooapis.jp/ShoppingWebService/V1/submitItem", Yahoo::Api.merge_pro(opts) ,opts "xml")
+          Yahoo::Request.post("https://circus.shopping.yahooapis.jp/ShoppingWebService/V1/submitItem", Yahoo::Api.merge_pro(opts) ,opts, "xml")
         end
 
         def get_item(opts={})
