@@ -40,7 +40,12 @@ module Yahoo
 
       def merge_pro(opts={})
         opts[:access_token] = @@options[:access_token]
+        opts[:seller_id] = @@options[:seller_id]
         opts
+      end
+
+      def seller_id
+        @@options[:seller_id]
       end
 
       def access_token
