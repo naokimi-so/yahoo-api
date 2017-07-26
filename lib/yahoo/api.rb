@@ -44,10 +44,6 @@ module Yahoo
         opts
       end
 
-      def seller_id
-        @@options[:seller_id]
-      end
-
       def access_token
         @@options[:access_token]
       end

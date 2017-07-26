@@ -29,7 +29,7 @@ module Yahoo
         end
 
         def upload_item_image_pack(opts={})
-          Yahoo::Request.both("https://circus.shopping.yahooapis.jp/ShoppingWebService/V1/uploadItemImagePack", Yahoo::Api.seller_id, Yahoo::Api.access_token ,opts, "xml")
+          Yahoo::Request.post("https://circus.shopping.yahooapis.jp/ShoppingWebService/V1/uploadItemImagePack", Yahoo::Api.seller_id, Yahoo::Api.access_token ,opts, "xml")
         end
 
         def delete_item_image(opts={})
