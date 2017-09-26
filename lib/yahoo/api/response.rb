@@ -3,7 +3,7 @@ module Yahoo
   class Response
 
     def initialize(response,format)
-      @response =response
+      @response = response
       body = @response.body
       if format == "json"
         body = body[9..(body.rindex(")")-1)] if body.include?("callback(")

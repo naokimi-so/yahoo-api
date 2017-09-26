@@ -52,7 +52,7 @@ module Yahoo
 
         # ダウンロード実行API
         def download_submit(opts={})
-          Yahoo::Request.get("https://circus.shopping.yahooapis.jp/ShoppingWebService/V1/downloadSubmit", Yahoo::Api.merge_pro(opts), "xml")
+          Yahoo::Request.file_get("https://circus.shopping.yahooapis.jp/ShoppingWebService/V1/downloadSubmit", Yahoo::Api.merge_pro(opts), "xml")
         end
 
       end

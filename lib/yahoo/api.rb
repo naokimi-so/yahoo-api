@@ -11,9 +11,11 @@ require "yahoo/api/shp"
 require "yahoo/api/image"
 require "yahoo/api/st-category"
 require "yahoo/api/store-opening"
+require "yahoo/api/stock"
 require "yahoo/api/shopping"
 require "yahoo/api/auction"
 require "yahoo/api/news"
+require "yahoo/api/order"
 
 module Yahoo
 

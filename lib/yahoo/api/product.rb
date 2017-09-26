@@ -50,7 +50,7 @@ module Yahoo
         end
 
         def upload_item_file(opts={})
-          Yahoo::Request.post("https://circus.shopping.yahooapis.jp/ShoppingWebService/V1/uploadItemFile", Yahoo::Api.access_token ,opts,"xml")
+          Yahoo::Request.post_file("https://circus.shopping.yahooapis.jp/ShoppingWebService/V1/uploadItemFile", Yahoo::Api.access_token ,opts,"xml")
         end
       end
 
