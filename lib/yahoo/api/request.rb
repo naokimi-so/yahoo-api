@@ -24,13 +24,16 @@ module Yahoo
     end
 
     def self.post_file(path,access_token,opts,format="json")
-      conn = Faraday.new(:url => path + "?seller_id=#{opts[:seller_id]}") do |c|
-        c.adapter Faraday.default_adapter
+      conn = Faraday.new(:url => "#{path}?seller_id=#{opts[:seller_id]}") do |c|
+        c.request :multipart
+        c.request :url_encoded
+        c.adapter :net_http
         c.headers['Authorization'] = "Bearer " + access_token
       end
       Yahoo::Response.new(conn.post { |req|
-        req.body = opts.map {|k,v|"#{k}=#{CGI.escape(v)}"}.join('&')
-        p req.body
+        req.body = {
+          file: Faraday::UploadIO.new(opts[:file_path], opts[:file_type], opts[:file_name])
+        }
       },format)
     end
 

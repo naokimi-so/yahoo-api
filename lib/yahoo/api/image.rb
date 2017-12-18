@@ -25,7 +25,7 @@ module Yahoo
         end
 
         def upload_item_image(opts={})
-          Yahoo::Request.post("https://circus.shopping.yahooapis.jp/ShoppingWebService/V1/uploadItemImage", Yahoo::Api.access_token ,opts, "xml")
+          Yahoo::Request.post_file("https://circus.shopping.yahooapis.jp/ShoppingWebService/V1/uploadItemImage", Yahoo::Api.access_token ,opts, "xml")
         end
 
         def upload_item_image_pack(opts={})
