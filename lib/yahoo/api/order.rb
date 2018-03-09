@@ -23,11 +23,11 @@ module Yahoo
         end
 
         def order_list(opts={})
-          Yahoo::Request.post("https://circus.shopping.yahooapis.jp/ShoppingWebService/V1/orderList", Yahoo::Api.access_token, opts, "xml")
+          Yahoo::Request.post_xml_list("https://circus.shopping.yahooapis.jp/ShoppingWebService/V1/orderList", Yahoo::Api.access_token, opts, "xml")
         end
 
         def order_info(opts={})
-          Yahoo::Request.post("https://circus.shopping.yahooapis.jp/ShoppingWebService/V1/orderInfo", Yahoo::Api.access_token, opts, "xml")
+          Yahoo::Request.post_xml_info("https://circus.shopping.yahooapis.jp/ShoppingWebService/V1/orderInfo", Yahoo::Api.access_token, opts, "xml")
         end
 
         def order_status_change(opts={})
