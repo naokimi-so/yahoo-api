@@ -83,10 +83,12 @@ module Yahoo
       http = Net::HTTP.new(uri.host, uri.port)
       http.use_ssl = true
       http.verify_mode = OpenSSL::SSL::VERIFY_PEER
-      key_path = Rails.root.to_s + "/public/play-smart.key"      
-      cert_path = Rails.root.to_s + "/public/SHP-play-smart.crt"
-      http.key = OpenSSL::PKey::RSA.new(File.read(key_path))
-      http.cert = OpenSSL::X509::Certificate.new(File.read(cert_path))
+      # key_path = Rails.root.to_s + "/public/play-smart.key"      
+      # cert_path = Rails.root.to_s + "/public/SHP-play-smart.crt"
+      # http.key = OpenSSL::PKey::RSA.new(File.read(key_path))
+      # http.cert = OpenSSL::X509::Certificate.new(File.read(cert_path))
+      http.key = OpenSSL::PKey::RSA.new(opts[:order_key])
+      http.cert = OpenSSL::X509::Certificate.new(opts[:order_cert])
       http.set_debug_output $stderr
       http.start do |h|
         response = h.request(request)
@@ -116,10 +118,12 @@ module Yahoo
       http = Net::HTTP.new(uri.host, uri.port)
       http.use_ssl = true
       http.verify_mode = OpenSSL::SSL::VERIFY_PEER
-      key_path = Rails.root.to_s + "/public/play-smart.key"      
-      cert_path = Rails.root.to_s + "/public/SHP-play-smart.crt"
-      http.key = OpenSSL::PKey::RSA.new(File.read(key_path))
-      http.cert = OpenSSL::X509::Certificate.new(File.read(cert_path))
+      # key_path = Rails.root.to_s + "/public/play-smart.key"      
+      # cert_path = Rails.root.to_s + "/public/SHP-play-smart.crt"
+      # http.key = OpenSSL::PKey::RSA.new(File.read(key_path))
+      # http.cert = OpenSSL::X509::Certificate.new(File.read(cert_path))
+      http.key = OpenSSL::PKey::RSA.new(opts[:order_key])
+      http.cert = OpenSSL::X509::Certificate.new(opts[:order_cert])
       http.set_debug_output $stderr
       http.start do |h|
         response = h.request(request)
