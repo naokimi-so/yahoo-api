@@ -90,9 +90,12 @@ module Yahoo
         response = h.request(request)
       end
       item = Hash.from_xml(response.body)
-      item["Result"]["Search"]["OrderInfo"]
-      # エラーの場合の処理。ステータスは以下
-      # item["Result"]["Status"] = "NG"
+
+      if opts[:auth_flg] == true
+        return item["Result"]["Status"]
+      else
+        return item["Result"]["Search"]["OrderInfo"]
+      end
     end
 
     def self.post_xml_info(path, access_token, opts, format="json")
@@ -122,6 +125,39 @@ module Yahoo
       end
       item = Hash.from_xml(response.body)
       item["ResultSet"]["Result"]["OrderInfo"]
+      # エラーの場合の処理。ステータスは以下
+      # item["ResultSet"]["Result"]["Status"] = "NG"
+    end
+    
+    def self.post_xml_status(path, access_token, opts, format="json")
+      uri = URI.parse(path)
+      response = nil
+      request = Net::HTTP::Post.new(uri.request_uri)
+      request["Content-Type"] = "text/xml;charset=UTF-8"
+      request["Authorization"] = "Bearer " + access_token
+      xml = 
+        "<?xml version='1.0' encoding='UTF-8'?>
+        <Req>
+          <Target>
+            <OrderId>#{opts[:order_id]}</OrderId>
+            <IsPointFix>#{opts[:is_point_fix]}</IsPointFix>
+          </Target>
+          <Order>
+            <OrderStatus>#{opts[:order_status]}</OrderStatus>
+          </Order>
+          <SellerId>#{opts[:seller_id]}</SellerId>
+        </Req>"
+      request.body = xml
+      http = Net::HTTP.new(uri.host, uri.port)
+      http.use_ssl = true
+      http.verify_mode = OpenSSL::SSL::VERIFY_PEER
+      http.key = OpenSSL::PKey::RSA.new(opts[:order_key])
+      http.cert = OpenSSL::X509::Certificate.new(opts[:order_cert])
+      http.set_debug_output $stderr
+      http.start do |h|
+        response = h.request(request)
+      end
+      item = Hash.from_xml(response.body)
       # エラーの場合の処理。ステータスは以下
       # item["ResultSet"]["Result"]["Status"] = "NG"
     end

@@ -31,7 +31,7 @@ module Yahoo
         end
 
         def order_status_change(opts={})
-          Yahoo::Request.post("https://circus.shopping.yahooapis.jp/ShoppingWebService/V1/orderStatusChange", Yahoo::Api.access_token, opts, "xml")
+          Yahoo::Request.post_xml_status("https://circus.shopping.yahooapis.jp/ShoppingWebService/V1/orderStatusChange", Yahoo::Api.access_token, opts, "xml")
         end
 
         def order_pay_status_change(opts={})
