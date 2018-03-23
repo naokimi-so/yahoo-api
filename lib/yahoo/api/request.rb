@@ -135,7 +135,7 @@ module Yahoo
       request = Net::HTTP::Post.new(uri.request_uri)
       request["Content-Type"] = "text/xml;charset=UTF-8"
       request["Authorization"] = "Bearer " + access_token
-      xml = 
+      xml = \
         "<?xml version='1.0' encoding='UTF-8'?>
         <Req>
           <Target>
